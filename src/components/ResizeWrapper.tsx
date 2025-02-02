@@ -35,6 +35,8 @@ const ResizeWrapper = ({
           height: ref.offsetHeight,
         });
       }}
+      minHeight={defaultHeight}
+      minWidth={defaultWidth}
       onResizeStart={() => onResizeStart && onResizeStart()} // Disable sorting when resizing starts
       onResizeStop={() => onResizeStop && onResizeStop()} // Enable sorting after resizing stops
       enable={{

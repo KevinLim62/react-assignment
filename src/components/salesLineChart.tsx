@@ -2,25 +2,20 @@ import { useSelector } from "react-redux";
 import {
   LineChart,
   Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  Cell,
 } from "recharts";
 import ResizeWrapper from "./ResizeWrapper";
 import React from "react";
 import { RootState } from "../store";
 
 export const SalesLineChart = ({
-  handleSortingEnable,
+  isResizeEnable,
 }: {
-  handleSortingEnable: (state: boolean) => void;
+  isResizeEnable: boolean;
 }) => {
   const data = useSelector((state: RootState) => state.chart.lineChartData);
 
@@ -28,8 +23,7 @@ export const SalesLineChart = ({
     <ResizeWrapper
       defaultWidth={600}
       defaultHeight={400}
-      onResizeStart={() => handleSortingEnable(false)}
-      onResizeStop={() => handleSortingEnable(true)}
+      resizeEnable={isResizeEnable}
     >
       {(width, height) => (
         <>

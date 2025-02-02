@@ -1,34 +1,13 @@
 import { useSelector } from "react-redux";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Cell,
-} from "recharts";
 import ResizeWrapper from "./ResizeWrapper";
 import React from "react";
 import { RootState } from "../store";
 
-export const UsersTable = ({
-  handleSortingEnable,
-}: {
-  handleSortingEnable: (state: boolean) => void;
-}) => {
+export const UsersTable = ({ isResizeEnable }: { isResizeEnable: boolean }) => {
   const users = useSelector((state: RootState) => state.table.users);
 
   return (
-    <ResizeWrapper
-      onResizeStart={() => handleSortingEnable(false)}
-      onResizeStop={() => handleSortingEnable(true)}
-    >
+    <ResizeWrapper defaultHeight={400} resizeEnable={isResizeEnable}>
       {() => (
         <>
           <h2 className="text-xl font-semibold mb-4">Users</h2>
@@ -84,17 +63,14 @@ export const UsersTable = ({
 };
 
 export const ProductsTable = ({
-  handleSortingEnable,
+  isResizeEnable,
 }: {
-  handleSortingEnable: (state: boolean) => void;
+  isResizeEnable: boolean;
 }) => {
   const products = useSelector((state: RootState) => state.table.products);
 
   return (
-    <ResizeWrapper
-      onResizeStart={() => handleSortingEnable(false)}
-      onResizeStop={() => handleSortingEnable(true)}
-    >
+    <ResizeWrapper defaultHeight={400} resizeEnable={isResizeEnable}>
       {() => (
         <>
           <h2 className="text-xl font-semibold mb-4">Products</h2>
